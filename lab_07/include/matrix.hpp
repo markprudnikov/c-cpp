@@ -24,11 +24,11 @@ public:
     Matrix operator-(Matrix const &m);
 
     Matrix& operator*=(Matrix const &m);
-    Matrix operator*(Matrix const &m);
+    Matrix operator*(Matrix const &m) const;
 
 
-    bool operator==(Matrix const &m);
-    bool operator!=(Matrix const &m);
+    bool operator==(Matrix const &m) const;
+    bool operator!=(Matrix const &m) const;
 
     Matrix& operator=(Matrix const &m);
 

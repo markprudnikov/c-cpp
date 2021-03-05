@@ -32,7 +32,10 @@ int Matrix::get(std::size_t i, std::size_t j) const {
 void Matrix::print(FILE* f) const {
     for (std::size_t i = 0; i < _rows; i++) {
         for (std::size_t j = 0; j < _cols; j++) {
-            fprintf(f, "%d ", _data[i][j]);
+            if (j != _cols - 1)
+                fprintf(f, "%d ", _data[i][j]);
+            else
+                fprintf(f, "%d", _data[i][j]);
         }
         fprintf(f, "\n");
     }
@@ -83,13 +86,13 @@ Matrix& Matrix::operator*=(Matrix const &m) {
     return *this;
 }
 
-Matrix Matrix::operator*(Matrix const &m) {
-    Matrix copy = *this;
+Matrix Matrix::operator*(Matrix const &m) const {
+    Matrix copy(*this);
     copy *= m;
     return copy;
 }
 
-bool Matrix::operator==(Matrix const &m) {
+bool Matrix::operator==(Matrix const &m) const {
     for (std::size_t i = 0; i < _rows; i++) {
         for (std::size_t j = 0; j < _cols; j++) {
             if (_data[i][j] != m._data[i][j]) {
@@ -101,7 +104,7 @@ bool Matrix::operator==(Matrix const &m) {
     return true;
 }
 
-bool Matrix::operator!=(Matrix const &m) {
+bool Matrix::operator!=(Matrix const &m) const {
     return !(*this == m);
 }
 
