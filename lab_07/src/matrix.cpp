@@ -88,7 +88,7 @@ Matrix Matrix::operator*=(Matrix const &m) {
 
 Matrix Matrix::operator*(Matrix const &m) const {
     Matrix copy = *this;
-    copy += m;
+    copy *= m;
     return copy;
 }
 
