@@ -8,10 +8,7 @@ Matrix::Matrix(std::size_t r, std::size_t c): _rows(r), _cols(c) {
 
 Matrix::Matrix(Matrix const &m): _rows(m._rows), _cols(m._cols) {
     _data = allocate_memory(_rows, _cols);
-
-    for (std::size_t i = 0; i < _rows; i++) {
-        memcpy(_data[i], m._data[i], _cols * sizeof(int));
-    }
+    memcpy(_data[0], m._data[0], _cols * sizeof(int) * _rows);
 }
 
 Matrix::~Matrix() {
