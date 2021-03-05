@@ -1,4 +1,4 @@
-CFLAGS:=-Wall -Wextra -Werror -I include -std=c++11
+CFLAGS:=-Wall -Wextra -Werror -I include -std=c++11 -g
  
 lab_07: obj/main.o obj/matrix.o
 	g++ obj/main.o obj/matrix.o -o lab_07
