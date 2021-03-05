@@ -23,8 +23,8 @@ public:
     Matrix& operator-=(Matrix const &m);
     Matrix operator-(Matrix const &m);
 
-    Matrix operator*=(Matrix const &m);
-    Matrix& operator*(Matrix const &m);
+    Matrix& operator*=(Matrix const &m);
+    Matrix operator*(Matrix const &m);
 
 
     bool operator==(Matrix const &m);

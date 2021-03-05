@@ -70,7 +70,8 @@ Matrix Matrix::operator-(Matrix const &m) {
     return copy;
 }
 
-Matrix Matrix::operator*=(Matrix const &m) {
+Matrix& Matrix::operator*=(Matrix const &m) {
+    _cols = m._cols;
     Matrix copy(_rows, m._cols);
 
     for (std::size_t i = 0; i < _rows; i++)
@@ -78,13 +79,14 @@ Matrix Matrix::operator*=(Matrix const &m) {
             for (std::size_t k = 0; k < m._cols; k++)
                 copy._data[i][j] += _data[i][k] * m._data[k][j];
 
-    return copy;
+    *this = copy;
+    return *this;
 }
 
-
-Matrix& Matrix::operator*(Matrix const &m) {
-    Matrix* copy = new Matrix(*this *= m);
-    return *copy;
+Matrix Matrix::operator*(Matrix const &m) {
+    Matrix copy = *this;
+    copy *= m;
+    return copy;
 }
 
 bool Matrix::operator==(Matrix const &m) {
