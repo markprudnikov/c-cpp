@@ -73,7 +73,7 @@ Matrix Matrix::operator-(Matrix const &m) {
     return copy;
 }
 
-Matrix Matrix::operator*=(Matrix const &m) {
+Matrix& Matrix::operator*=(Matrix const &m) {
     Matrix copy(_rows, m._cols);
 
     for (std::size_t i = 0; i < _rows; i++)
